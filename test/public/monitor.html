@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>呼び出し番号</title>
+  <style>
+    body {
+      background: black;
+      color: lime;
+      font-size: 5em;
+      text-align: center;
+      padding-top: 100px;
+    }
+  </style>
+</head>
+<body>
+  <div id="display">----</div>
+  <script>
+    setInterval(() => {
+      fetch('/api/current-calling')
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById('display').textContent = data.number;
+        });
+    }, 2000);
+  </script>
+</body>
+</html>
